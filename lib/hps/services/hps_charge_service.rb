@@ -518,10 +518,10 @@ module Hps
       response = doTransaction(transaction)
 
       header = response["Header"]
-      process_charge_gateway_response(header["GatewayRspCode"], header["GatewayRspMsg"], header["GatewayTxnId"], amount, currency)
+      #process_charge_gateway_response(header["GatewayRspCode"], header["GatewayRspMsg"], header["GatewayTxnId"], amount, currency)
 
       creditSaleRsp = response["Transaction"]["CreditSale"]
-      process_charge_issuer_response(creditSaleRsp["RspCode"], creditSaleRsp["RspText"], header["GatewayTxnId"], amount, currency)
+      #process_charge_issuer_response(creditSaleRsp["RspCode"], creditSaleRsp["RspText"], header["GatewayTxnId"], amount, currency)
 
       result = HpsCharge.new(hydrate_transaction_header(header))
       result.transaction_id = header["GatewayTxnId"]
@@ -551,10 +551,10 @@ module Hps
 
       response = doTransaction(transaction)
       header = response["Header"]
-      process_charge_gateway_response(header["GatewayRspCode"], header["GatewayRspMsg"], header["GatewayTxnId"], amount, currency)
+      #process_charge_gateway_response(header["GatewayRspCode"], header["GatewayRspMsg"], header["GatewayTxnId"], amount, currency)
 
       auth_response = response["Transaction"]["CreditAuth"]
-      process_charge_issuer_response(auth_response["RspCode"], auth_response["RspText"], header["GatewayTxnId"], amount, currency)
+      #process_charge_issuer_response(auth_response["RspCode"], auth_response["RspText"], header["GatewayTxnId"], amount, currency)
 
       result = HpsAuthorization.new(hydrate_transaction_header(header))
       result.transaction_id = header["GatewayTxnId"]
