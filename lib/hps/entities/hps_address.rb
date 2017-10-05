@@ -6,6 +6,7 @@ module Hps
 		def initialize params = {}
 			@address = params[:address]
 			@address ||= params[:address1]
+			@address = @address.to_s.gsub(/\s+/,'')
 			@city = params[:city]
 			@state = params[:state]
 			@zip = params[:zip]
